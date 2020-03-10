@@ -10,6 +10,13 @@ Create list of conveyors
 Create list of projectors
 Create list of all blocks
 
+//Accept commands from PB
+??
+
+//Start LCDs
+Get LCDs
+Set up LCD for status messages
+
 //Check for damgage
 If any blocks are below hacking threshold
   Display error - write to screen damaged block
@@ -17,7 +24,9 @@ If any blocks are below hacking threshold
   Turn drill motor off
   Halt pistons
   Turn on warning lights
-
+if rotors or pistons are missing heads
+  error
+  
 //Check Inventory levels
 Get inventory level in welders
 Get inventory level in containers
@@ -28,11 +37,11 @@ If inventory contains stone eject the stone
 Issue run command to IQueue PB
 
 //Check operation of all mechanics
-
 Get drill motor
 Get pusher merge blocks
 Get static merge blocks
 Get pusher pistons
+
 //Drill motor
 Start drill motor
 if drill motor is not spinning error
@@ -41,7 +50,15 @@ if drill motor is not spinning error
   Turn drill motor off
   Halt pistons
   Turn on warning lights
-//Pusher piston
+
+//Rotors
+Get Hanger rotors
+Reduce hanger rotor displacement to Min
+Increase hanger rotor displacement to Max
+Return hangar rotor displacement to -25cm
+
+
+//Pusher piston and merge blocks
 Check merge blocks for connection status
 Get piston position
   if static merge blocks are connected
@@ -57,6 +74,6 @@ Get piston position
         if piston position reaches 0 or 10
           raise pusher hanger rotor displacement
           check for merge block connection
-            if merge block is does not connect
+            if merge block does not connect
               error
 
