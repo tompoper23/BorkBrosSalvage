@@ -1,0 +1,62 @@
+Create list of all pistons
+Create list of all welders
+Create list of all drills
+Create list of all merge blocks
+Create list of all rotors
+Create list of storage devices
+Create list of connectors
+Create list of conveyor sorters
+Create list of conveyors
+Create list of projectors
+Create list of all blocks
+
+//Check for damgage
+If any blocks are below hacking threshold
+  Display error - write to screen damaged block
+  Turn drills off
+  Turn drill motor off
+  Halt pistons
+  Turn on warning lights
+
+//Check Inventory levels
+Get inventory level in welders
+Get inventory level in containers
+Get stone ejectors
+Get stone ejection sotrers
+If inventory in welders is low move inventory into welders
+If inventory contains stone eject the stone
+Issue run command to IQueue PB
+
+//Check operation of all mechanics
+
+Get drill motor
+Get pusher merge blocks
+Get static merge blocks
+Get pusher pistons
+//Drill motor
+Start drill motor
+if drill motor is not spinning error
+  Display error - write to screen check drill head for obstructions
+  Turn drills off
+  Turn drill motor off
+  Halt pistons
+  Turn on warning lights
+//Pusher piston
+Check merge blocks for connection status
+Get piston position
+  if static merge blocks are connected
+    disconnect pusher merge blocks
+    lower pusher hanger rotor displacement
+    Operate pistons
+      if piston position changes
+        Display error - write to screen piston error
+        Halt pistons
+        Turn on warning lights
+      else
+        enable pusher merge block
+        if piston position reaches 0 or 10
+          raise pusher hanger rotor displacement
+          check for merge block connection
+            if merge block is does not connect
+              error
+
