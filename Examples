@@ -1,0 +1,9 @@
+IMyBlockGroup piston_Group = new IMyBlockGroup();
+List<IMyPistonExtendedBase> pistons = new List<IMyPistonExtendedBase>();
+GridTerminalSystem.GetBlockGroupWithName("Pushers");
+piston_Group.GetBlocksOfType(pistons);
+
+foreach(var piston in pistons);
+{
+piston.Extend();
+}
