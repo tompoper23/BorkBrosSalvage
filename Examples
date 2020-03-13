@@ -1,9 +1,19 @@
-IMyBlockGroup piston_Group = new IMyBlockGroup();
-List<IMyPistonExtendedBase> pistons = new List<IMyPistonExtendedBase>();
-GridTerminalSystem.GetBlockGroupWithName("Pushers");
-piston_Group.GetBlocksOfType(pistons);
-
+IMyBlockGroup piston_Group = GridTerminalSystem.GetBlockGroupWithName("Pushers);
+if (group == null)
+{
+  Echo("Group not found");
+  return;
+}
+List<IMyTerminalBlock> blocks = new List<IMyTerminalBlock>();
+piston_Group.GetBlocks(pistons);
 foreach(var piston in pistons);
 {
-piston.Extend();
+if (_command.TryParse("Extend")
+    {
+    piston.Extend();
+    }
+if (_command.TryParse("Reverse")
+    {
+     piston.Retract();
+     }
 }
