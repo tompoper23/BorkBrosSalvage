@@ -1,0 +1,44 @@
+using Sandbox.ModAPI.Ingame;
+using System.Collections.Generic;
+using VRage.Game.ModAPI.Ingame.Utilities;
+
+namespace IngameScript
+{
+    partial class Program : MyGridProgram
+    {
+
+        public Program()
+        {
+
+        }
+
+        public void Save()
+        {
+
+        }
+        MyCommandLine _commandLine = new MyCommandLine();
+        public void Main(string argument, UpdateType updateSource)
+        {
+            IMyBlockGroup piston_Group = GridTerminalSystem.GetBlockGroupWithName("Pushers");
+            if (piston_Group == null)
+            {
+                Echo("Group not found");
+                return;
+            }
+            List<IMyTerminalBlock> blocks = new List<IMyTerminalBlock>();
+            piston_Group.GetBlocks(blocks);
+            foreach (var piston in blocks)
+            {
+                if (_commandLine.TryParse("Extend"))
+                {
+                    piston.Extend();
+                }
+                if (_commandLine.TryParse("Reverse"))
+                {
+                    piston.Retract();
+                }
+            }
+
+        }
+    }
+}
